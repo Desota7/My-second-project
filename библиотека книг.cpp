@@ -19,6 +19,24 @@ struct Book {
 // ===== Хранилище =====
 vector<Book> library;
 
+void addBooK() {
+    Book b;
+    cout << "Название: ";
+    getline(cin, b.title);
+    cout << "Автор: ";
+    getline(cin, b.author);
+    cout << "Год: ";
+    cin >> b.year;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // очистка буфера
+    cout << "ISBN: ";
+    getline(cin, b.isbn);
+
+    b.available = true;
+    b.holder = "";
+    library.push_back(b);
+    cout << "Книга добавлена.\n";
+}
+
 // ===== Меню =====
 void printMenu() {
     cout << "\n===== БИБЛИОТЕКА =====\n";
@@ -42,7 +60,7 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         switch (choice) {
-        case 1: cout << "Заглушка: добавить книгу\n";   break;
+        case 1: addBooK();   break;
         case 2: cout << "Заглушка: показать книги\n";  break;
         case 3: cout << "Заглушка: найти книгу\n";     break;
         case 4: cout << "Заглушка: выдать книгу\n";    break;
